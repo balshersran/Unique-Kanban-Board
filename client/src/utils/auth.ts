@@ -1,15 +1,16 @@
 import { JwtPayload, jwtDecode } from 'jwt-decode';
+import { UserData } from '../interfaces/UserData';
 
 class AuthService {
   getProfile() {
     // TODO: return the decoded token
-    return jwtDecode(this.getToken);
+    return jwtDecode<UserData>(this.getToken());
   }
 
   loggedIn() {
     // TODO: return a value that indicates if the user is logged in
     const token = this.getToken();
-    return token && !this.isTokenExpired(token);
+    return !token && !this.isTokenExpired(token);
   }
   
   isTokenExpired(token: string) {
