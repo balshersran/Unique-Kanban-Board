@@ -40,7 +40,7 @@ class AuthService {
 
   logout() {
     // TODO: remove the token from localStorage
-    localStorage.removeItem('it_token', idToken);
+    localStorage.removeItem('it_token');
     // TODO: redirect to the login page
     window.location.assign('/');
   }
