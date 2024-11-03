@@ -1,13 +1,13 @@
-import { useState, FormEvent, ChangeEvent } from "react";
+import { useState, type FormEvent, type ChangeEvent } from "react";
 
 import Auth from '../utils/auth';
 import { login } from "../api/authAPI";
-import { UserLogin  } from "../interfaces/UserLogin";
+import { UserLogin } from "../interfaces/UserLogin";
 
 const Login = () => {
   const [loginData, setLoginData] = useState<UserLogin>({
     username: '',
-    password: ''
+    password: '',
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -23,8 +23,8 @@ const Login = () => {
     try {
       const data = await login(loginData);
       Auth.login(data.token);
-    } catch (err) {
-      console.error('Failed to login', err);
+    } catch (error) {
+      console.error('Failed to login', error);
     }
   };
 
